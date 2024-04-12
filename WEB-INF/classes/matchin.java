@@ -51,7 +51,7 @@ public class matchin extends HttpServlet {
     //ProcessBuilder builder = new ProcessBuilder(command);
     //Process process = builder.start();
 
-    Process process = Runtime.getRuntime().exec("/usr/bin/python3 /opt/tomcat/webapps/ROOT/WEB-INF/classes/face_detect.py /opt/tomcat/webapps/ROOT/matchin/images/istockphoto-805012064-612x612.jpg");
+    Process process = Runtime.getRuntime().exec("/usr/bin/python3 /opt/tomcat/webapps/ROOT/WEB-INF/classes/face_detect.py " + filePath);
     BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
     String line;
     String erout="";
