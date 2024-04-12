@@ -1,6 +1,6 @@
 import cv2
 import sys
-
+sys.path.append('/usr/local/lib/python3.9/dist-packages')
 face_cascade = cv2.CascadeClassifier('/opt/tomcat/webapps/ROOT/WEB-INF/classes/models/matchin/haarcascade_frontalface_default.xml')
 # Read the input image
 img = cv2.imread(sys.argv[1])
