@@ -60,7 +60,7 @@ public class matchin extends HttpServlet {
         out.println("<head><title>Uploaded Image</title></head>");
         out.println("<body>");
         out.println("<h2>Uploaded Image:</h2>");
-        out.println("<img src=\"wafle.ru/matchin/images/" + outputFileName + "\" alt=\"Uploaded Image\">");
+        out.println("<img src=\"https://wafle.ru/matchin/images/" + outputFileName + "\" alt=\"Uploaded Image\">");
         out.println("</body>");
         out.println("</html>");
 
