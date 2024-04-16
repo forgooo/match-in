@@ -46,27 +46,29 @@ public class matchin extends HttpServlet {
     Process process = Runtime.getRuntime().exec("/usr/bin/python3 /opt/tomcat/webapps/ROOT/WEB-INF/classes/face_detect.py " + filePath);
     BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
     String line;
-    String erout="";
+    String erout = "";
     while ((line = reader.readLine()) != null) {
         erout += line;
     }
 
     File outputFile = new File(uploadDirectory + outputFileName);
     if (outputFile.exists()) {
-      response.setContentType("image/jpeg");
-      response.setHeader("Content-Disposition", "attachment; filename=\"" + outputFileName + "\"");
-      OutputStream out = response.getOutputStream();
-      FileInputStream in = new FileInputStream(outputFile);
-      byte[] buffer = new byte[4096];
-      int length;
-      while ((length = in.read(buffer)) > 0) {
-        out.write(buffer, 0, length);
-      }
-      in.close();
-      out.flush();
+        response.setContentType("text/html");
+
+        PrintWriter out = response.getWriter();
+        out.println("<html>");
+        out.println("<head><title>Uploaded Image</title></head>");
+        out.println("<body>");
+        out.println("<h2>Uploaded Image:</h2>");
+        out.println("<img src=\"wafle.ru/matchin/images/" + outputFileName + "\" alt=\"Uploaded Image\">");
+        out.println("</body>");
+        out.println("</html>");
+
+        out.flush();
     } else {
-      response.getWriter().println("cheto slomalos btw");
-      //response.getWriter().println("Error: Output file does not exist.    " + erout);
+        response.getWriter().println("cheto slomalos btw");
+        //response.getWriter().println("Error: Output file does not exist.    " + erout);
     }
-  }
+}
+
 }
