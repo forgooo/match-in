@@ -23,12 +23,17 @@ public class matchin extends HttpServlet {
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.setContentType("text/html");
     PrintWriter out = response.getWriter();
-    out.println("<html><head><title>matchin</title></head>");
-    out.println("<body>");
-    out.println("<form method='post' enctype='multipart/form-data'><input type='file' name='file' /><input type='submit' value='Upload' /></form>");
-    out.println("</body></html>");
+    
+    // Read HTML content from file
+    BufferedReader reader = new BufferedReader(new FileReader("/opt/tomcat/webapps/ROOT/matchin/index.html"));
+    String line;
+    while ((line = reader.readLine()) != null) {
+        out.println(line);
+    }
+    reader.close();
+    
     out.close();
-  }
+}
 
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     File directory = new File(uploadDirectory);
